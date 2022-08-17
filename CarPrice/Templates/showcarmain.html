@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+
+		*{
+			margin: 0px;
+			padding: 0px;
+			box-sizing: border-box;
+		}
+		body{
+			background-color: #00b3b3;
+		}
+		.img1{
+			height: 280px;
+			width: 350px;
+		}
+		.big
+		{
+			position: absolute;
+			width: 100%;
+			height: auto;
+			background-image: linear-gradient(to bottom left,#00e699,#00b3b3,#00e699);
+		}
+		.subdiv{
+			float: left;
+			margin: 45px;
+			border: none;
+			width: 27%;
+			height: 58vh;
+			border-radius: 20px;
+			text-align: center ;
+			background-color: white;
+		}
+		.searchitem{
+			display: none;
+			height: 200px;
+			width: 500;
+			background-color: lightgreen;
+			color: white;
+		}
+		.iconimg{
+			width: 30px;
+			height: 30px;
+		}
+		#btn{
+			border: none;
+			outline: none;
+			background-color: transparent;
+			border-radius: 50%;
+		}
+		.viewbutton
+		{
+			border: none;
+			width: 300px;
+			height: 50px;
+			border-radius: 30px;
+			cursor: pointer;
+			font-size: 16px;
+		}
+		.search
+		{
+			width: 400px;
+			height: 30px;
+			border-radius: 30px;
+			padding-left: 20px;
+			border: 1px solid grey;
+		}
+		#st
+		{
+			width: 100px;
+			height: 30px;
+			margin-left: 30%;
+			margin-bottom: 3%;
+			margin-top: 2%;
+			border-radius: 30px;
+			padding-left: 25px;
+		}
+	</style>
+</head>
+<body>
+	<div class="big">
+		<div>
+			<select id="st">
+				<option value="2">Brand</option>
+				<option value="0">Model</option>
+				<option value="1">Price</option>
+				<option value="3">Year</option>
+				<option value="4">Mileage</option>
+				<option value="5">KM Driven</option>
+			</select>
+			<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search" class="search">
+			<button id="btn" onclick='recognition.start()' ondblclick="voiceSearch()"><img class="iconimg" src="https://png.pngitem.com/pimgs/s/160-1602527_radio-spot-icon-microphone-icon-green-png-transparent.png"></button>
+			<div class="searchitem" id="si">
+				<button onclick="myFunction()">Search</button>
+				<h1 id="result"></h1>  
+				<button onclick="voiceSearchClose()">X</button>
+			</div>
+		</div>
+		<div id="main_divs">
+		{% for i in x reversed %}
+			<div class="subdiv">
+				<img class="img1" src="{{i.car_image}}"><br>
+				<b>Model Name:</b><span>{{i.car_model_name}}</span><br>
+				<b>Price:₹</b><span>{{i.car_price}}</span><br>
+				<b>Brand:</b><span>{{i.car_brand}}</span><br>				
+				<b>Year:</b><span>{{i.year}}</span><br>
+				<b>Mileage:</b><span>{{i.mileage}}</span><br>
+				<b>KM Driven</b><span>{{i.km_driven}}</span><br>
+				<a href="../carsale/viewcarfeatures/{{i.id}}"><button class="viewbutton">Details</button></a>
+			</div>
+		{% endfor %}
+		</div>
+	</div>
+	<script>
+		const btn = document.getElementById('btn'); 
+ 
+		const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition; 
+		const recognition = new SpeechRecognition(); 
+ 
+		recognition.onstart = function(){ 
+    	console.log('You can speak now!!!'); 
+		} 
+ 
+		recognition.onresult = function(event){ 
+    	var text = event.results[0][0].transcript; 
+    	console.log(text); 
+    	document.getElementById('myInput').value = text;
+    	document.getElementById('result').innerHTML = text; 
+    	read(text);
+    	}
+    	function read(text)
+    	{ 
+   			var speech = new SpeechSynthesisUtterance(); 
+    		speech.text = text; 
+    		//searching(speech.text);
+    	/*	if(text.includes('time')) 
+        		speech.text = searching(input);*/
+        	window.speechSynthesis.speak(speech); 
+		}
+		function myFunction() 
+		{
+    		var input, filter, div, div_item, ahref, i, txtValue;
+	    	input = document.getElementById("myInput");
+    		filter = input.value.toUpperCase();
+    		div = document.getElementById("main_divs");
+    		div_item = div.getElementsByTagName("div");
+    		x=document.getElementById('st').value;
+    		for (i = 0; i < div_item.length; i++) 
+    		{
+        		ahref = div_item[i].getElementsByTagName("span")[x];
+        		if (ahref) 
+        		{
+            		txtValue = ahref.textContent || ahref.innerText;
+            		if (txtValue.toUpperCase().indexOf(filter) > -1) 
+            		{
+                		div_item[i].style.display = "";
+	            	} 
+	            	else 
+	            	{
+                		div_item[i].style.display = "none";
+    	        	}
+        		}
+    		}
+		}
+		function voiceSearch()
+ 		{
+ 			document.getElementById("si").style.display="block"
+ 		}
+ 		function voiceSearchClose()
+ 		{
+ 			document.getElementById("si").style.display="none"
+ 		}
+	</script>
+</body>
+</html>

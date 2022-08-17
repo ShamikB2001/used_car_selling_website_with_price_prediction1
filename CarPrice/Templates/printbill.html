@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.img1
+		{
+			width: 200px;
+			height: 120px;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<div>
+			<h1>
+				Hii <u>{{x.buyer_name}}</u> Your Order Successfully
+				<br>Check Plese your all information and car features and print the bill
+			</h1>
+		</div>
+		</div>
+		<div>
+		<table id="printTable">
+			<tr>
+				<td colspan="2"><h1>Bill Is Ready</h1></td>
+			</tr>
+			<tr>	
+				<td colspan="2"><h2>Buyer Information</h2></td>	
+			</tr>
+			<tr>	
+				<td><span>Name:</span></td>
+				<td><i>{{x.buyer_name}}</i><br></td>	
+			</tr>
+			<tr>	
+				<td><span>Email:</span></td>
+				<td><i>{{x.buyer_email}}</i><br></td>	
+			</tr>
+			<tr>	
+				<td><span>Phone No:</span></td>
+				<td><i>{{x.buyer_phone}}</i><br></td>	
+			</tr>
+			<tr>	
+				<td><span>Address:</span></td>
+				<td><i>{{x.buyer_address}}</i><br></td>	</tr>
+			<tr>	
+				<td><span>Pincode:</span></td>
+				<td><i>{{x.buyer_pincode}}</i><br></td>	</tr>
+			<tr>
+				<td><span>Payment Method</span></td>
+				<td><i>Cash</i></td>
+			</tr>
+			<tr>	
+				<td colspan="2"><h2>Saler Information</h2></td>	
+			</tr>
+			<tr>	
+				<td><span>Name:</span></td>
+				<td><i>{{x.buser_name}}</i></td>	
+			</tr>
+			<tr>	
+				<td><span>Phone:</span></td>
+				<td><i>{{x.buser_phoneno}}</i></td>	
+			</tr>
+			<tr>	
+				<td><span>State:</span></td>
+				<td><i>{{x.bcar_state}}</i></td>	
+			</tr>
+			
+			<tr>	
+				<td colspan="2"><h2>Car Information</h2></td>	
+			</tr>
+			<tr>	
+				<td><span>Model Name:</span></td>
+				<td><i>{{x.bcar_model_name}}</i></td>	
+			</tr>
+			<tr>	
+				<td><span>Brand:</span></td>
+				<td><i>{{x.bcar_brand}}</i></td>	
+			</tr>
+			<tr>	
+				<td><span>Image:</span></td>
+				<td><img style="height: 150px;width: 250px" src="{{x.bcar_image}}"></td>	
+			</tr>
+			
+			<tr>	
+				<td><span>Price:</span></td>
+				<td><i>₹<var>{{x.bcar_price}}</var></i></td>	
+			</tr>
+			<tr>	
+				<td><span>Year:</span></td>
+				<td><i>{{x.byear}}</i></td>	
+			</tr>
+			<tr>	
+				<td><span>Seller Type:</span></td>
+				<td><i>{{x.bseller_type}}</i></td>	
+			</tr>
+			<tr>	
+				<td><span>KM Driven:</span></td>
+				<td><i>{{x.bkm_driven}}</i></td>	
+			</tr>
+			<tr>	
+				<td><span>Owner Type:</span></td><td><i>{{x.bowner_type}}</i></td>	
+			</tr>
+			<tr>	
+				<td><span>Fuel Type:</span></td>
+				<td><i>{{x.bfuel_type}}</i></td>	
+			</tr>
+			<tr>	
+				<td><span>Transmission Type:</span></td>
+				<td><i>{{x.btransmission_type}}</i></td>
+			</tr>
+			<tr>	
+				<td><span>Mileage:</span></td>
+				<td><i>{{x.bmileage}} KMpH</i></td>	
+			</tr>
+			<tr>	
+				<td><span>Engine:</span></td>
+				<td><i>{{x.bengine}}</i></td>	
+			</tr>
+			<tr>	
+				<td><span>Max Power:</span></td>
+				<td><i>{{x.bmax_power}}</i></td>	
+			</tr>
+			<tr>	
+				<td><span>Seats:</span></td>
+				<td><i>{{x.bseats}}</i></td>	
+			</tr>
+		</table>	
+		<button onclick="printData()">Print</button>
+		</div>
+	</div>
+	<script type="text/javascript">
+		function printData()
+		{
+   			var divToPrint=document.getElementById("printTable");
+   			newWin= window.open("");
+   			newWin.document.write(divToPrint.outerHTML);
+   			newWin.print();
+		}
+	</script>
+</body>
+</html>

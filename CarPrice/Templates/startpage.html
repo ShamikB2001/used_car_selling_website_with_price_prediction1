@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+<style type="text/css">
+	*{
+	margin: 0;
+	padding: 0;
+	font-family: Century Gothic;
+	}
+header{
+	background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url("https://media.istockphoto.com/photos/black-honeycomb-hexagon-picture-id1020736394?b=1&k=20&m=1020736394&s=170667a&w=0&h=7oZCCY_vm9bHoWImJ48cgVfPGl4kqaBx_I0sMzwDzRc=");
+	height: 100vh;
+	background-size: cover;
+	background-position: center;
+}
+
+.left{
+	float: left;
+	list-style-type: none;
+	padding-top: 35px;
+}
+
+.left li{
+	display: inline-block;
+}
+
+.left li a{
+	text-decoration: none;
+	color: #fff;
+	padding: 5px 20px;
+	border: 1px solid transparent;
+	transition: 0.8s ease;
+}
+
+.left li a:hover{
+	background-color: #fff;
+	color: #000;
+}
+
+.left li.active a{
+	background-color: #fff;
+	color: #000;
+}
+
+.right{
+	float: right;
+	list-style-type: none;
+	padding-top: 35px;
+}
+
+.right li{
+	display: inline-block;
+}
+
+.right li a{
+	text-decoration: none;
+	color: #fff;
+	padding: 8px 20px;
+	border: 1px solid transparent;
+	transition: 0.8s ease;
+	border-radius: 30px;
+}
+
+.right .log a{
+	border-radius: 30px;
+	background-color: #3399ff;
+	border: 1px solid #3399ff;
+	padding: 8px 20px;
+}
+
+.right li a:hover{
+	background-color: #fff;
+	color: #000;
+}
+
+.main{
+	max-width: 1300px;
+	margin: auto;
+}
+
+.title{
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+
+.title h1{
+	color: #fff;
+	font-size: 70px;
+}
+
+.title h1 span{
+	color: orange;
+	font-size: 70px;
+}
+</style>
+</head>
+<body>
+	<header>
+
+		<div class="main">
+			<div class="title">
+				<h1>Find Your <span>Perfect</span> Car</h1>
+			</div>
+			<ul class="right">
+				<li class="log"><a href='http://localhost:8000/carsale/login_acc'>Log in</a></li>
+				<li><a href='http://localhost:8000/carsale/create_acc'>Register</a></li>
+			</ul>
+		</div>
+	</header>
+</body>
+</html>

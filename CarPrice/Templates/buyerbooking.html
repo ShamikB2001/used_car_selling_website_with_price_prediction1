@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		*
+		{
+			margin: 0px;
+			padding: 0px;
+			box-sizing: border-box;
+		}
+		.big
+		{
+			position: relative;
+			width: 100%;
+			height: 100vh;
+			background-image: linear-gradient(to bottom left,#00b3b3,#00b3b3,#00e699);
+		}
+		.small
+		{
+			left: 35%;
+			top: 15%;
+			padding: 30px;
+			position: absolute;
+			border: none;
+			border-radius: 20px;
+			background-color: white;
+			text-align: center;
+		}
+		.textbox2
+		{
+			width: 400px;
+			height: 40px;
+			padding: 15px;
+			border-radius: 30px;
+			border: 1px solid gray;
+			-webkit-box-shadow: inset 0px 5px 5px 1px lightgrey;	
+		}
+		.next
+		{
+			width: 200px;
+			height: 40px;
+			border-radius: 30px;
+			border: 1px solid #00e699;
+			cursor: pointer;
+			transition: 0.6s ease;
+		}
+		.next:hover
+		{
+			background-color: #00e699;
+			cursor: pointer;
+			color: white;
+		}
+		.submit
+		{
+			width: 200px;
+			height: 40px;
+			border-radius: 30px;
+			border: 1px solid #00e699;
+			cursor: pointer;
+			transition: 0.6s ease;
+		}
+		.submit:hover
+		{
+			background-color: #00e699;
+			cursor: pointer;
+			color: white;
+		}
+		.cb{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="big">
+		<div class="small">
+			<form method="post" action="../buyercar/{{ x.id }}">
+				{% csrf_token %}
+				<h2>{{x.car_model_name}}</h2>
+				<h2>{{x.car_price}}</h2>
+			</form>
+			<form method="post" action="../buyerordered">
+				{% csrf_token %}<br>
+				<input type="text" class="textbox2" placeholder="Enter Your Name" name="buyer_name"><br><br>
+				<input type="email" class="textbox2" placeholder="Enter Your Email" name="buyer_email"><br><br>
+				<input type="text" class="textbox2" placeholder="Enter Your Name" name="buyer_phone"><br><br>
+				<input type="text" class="textbox2" placeholder="Enter Your Full Address" name="buyer_address"><br><br>
+				<input type="tel" class="textbox2" placeholder="Enter Your Pincode" name="buyer_pincode"><br><br>
+				<input class="cb" type="text" id="time1" name="buyer_time">
+				<input class="cb" type="text" name="buser_name" value="{{x.user_name}}">
+				<input class="cb" type="text" name="bcar_state" value="{{x.car_state}}">
+				<input class="cb" type="text" name="buser_phoneno" value="{{x.user_phoneno}}">
+				<input class="cb" type="text" name="bcar_model_name" value="{{x.car_model_name}}">
+				<input class="cb" type="text" name="bcar_brand" value="{{x.car_brand}}">
+				<input class="cb" type="text" name="bcar_image" value="{{x.car_image}}">
+				<input class="cb" type="text" name="bcar_price" value="{{x.car_price}}">
+				<input class="cb" type="text" name="byear" value="{{x.year}}">
+				<input class="cb" type="text" name="bseller_type" value="{{x.seller_type}}">
+				<input class="cb" type="text" name="bkm_driven" value="{{x.km_driven}}">
+				<input class="cb" type="text" name="bowner_type" value="{{x.owner_type}}">
+				<input class="cb" type="text" name="bfuel_type" value="{{x.fuel_type}}">
+				<input class="cb" type="text" name="btransmission_type" value="{{x.transmission_type}}">
+				<input class="cb" type="text" name="bmileage" value="{{x.mileage}}">
+				<input class="cb" type="text" name="bengine" value="{{x.engine}}">
+				<input class="cb" type="text" name="bmax_power" value="{{x.max_power}}">
+				<input class="cb" type="text" name="bseats" value="{{x.seats}}">
+				<input type="submit" value="Confirm Order" name="" class="submit">
+			</form>
+			<br><a href="../carsale/finalbooking"><button class="next">Next</button></a>
+		</div>
+	</div>
+	<script type="text/javascript">
+			time= new Date();
+			document.getElementById('time1').value = time;
+	</script>
+</body>
+</html>

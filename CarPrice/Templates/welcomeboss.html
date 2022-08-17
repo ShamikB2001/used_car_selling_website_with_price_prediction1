@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<style type="text/css">
+	*
+	{
+		margin:0;
+		padding:0;
+		box-sizing: border-box;
+		
+	}
+	.Big
+	{
+		position: relative;
+		width: 100%;
+		height: 100vh;
+		background-color: pink;
+	}
+	.BigLeft
+	{
+		position: relative;
+		float: left;
+		width: 33.3%;
+		height: 100vh;
+		background-image: linear-gradient(to bottom left,#00b3b3,#00b3b3,#00e699);
+	}
+	.BigRight
+	{
+		position: relative;
+		float: left;
+		width: 33.3%;
+		height: 100vh;
+		background-image: linear-gradient(to top right,#00b3b3,#00b3b3);
+	}
+	.BigNew
+	{
+		position: relative;
+		float: left;
+		width: 33.3%;
+		height: 100vh;
+		background-image: linear-gradient(to top right,#00b3b3,#00b3b3,#00e699);
+	}
+	.MiniLeft
+	{
+		position: relative;
+		top: 20%;
+		left: 15%;
+		float: left;
+		width: 70%;
+		height: 55vh;
+		background-color: white;
+		text-align: center;
+		padding-top: 5%;
+		box-shadow: 10px 0px 30px 10px grey;
+		cursor: pointer;
+		border-radius: 20px;
+		transition: 0.6s ease;
+	}
+	.MiniLeft:hover
+	{
+		box-shadow: 10px 0px 30px 10px white;
+		color: red;
+	}
+	.MiniRight
+	{
+		position: relative;
+		top: 20%;
+		float: left;
+		left: 15%;
+		width: 70%;
+		height: 55vh;
+		background-color: white;
+		text-align: center;
+		padding-top: 5%;
+		box-shadow: 10px 0px 30px 10px grey;
+		cursor: pointer;
+		border-radius: 20px;
+		transition: 0.6s ease;
+	}
+	.MiniRight:hover
+	{
+		box-shadow: 10px 0px 30px 10px white;
+		color: red;
+	}
+	.MiniNew
+	{
+		position: relative;
+		top: 20%;
+		float: left;
+		left: 15%;
+		width: 70%;
+		height: 55vh;
+		background-color: white;
+		text-align: center;
+		padding-top: 5%;
+		box-shadow: 10px 0px 30px 10px grey;
+		cursor: pointer;
+		border-radius: 20px;
+		transition: 0.6s ease;
+	}
+	.MiniNew:hover
+	{
+		box-shadow: 10px 0px 30px 10px white;
+		color: red;
+	}
+	span
+	{
+		font-size: 20px;
+		color: black;
+	}
+	.buy
+	{
+		width: 280px;
+		height: 240px;	
+	}
+	.sale
+	{
+		width: 270px;
+		height: 200px;
+	}
+	.pre
+	{
+		width: 270px;
+		height: 220px;
+		margin-left: 5%;
+	}
+</style>
+<body>
+	<div class="Big">
+		<div class="BigLeft">
+			<a href='http://localhost:8000/carsale/showcarmain'>
+				<div class="MiniLeft">
+					<h1>Buyer</h1><br>
+					<span>If you want to buy a car<br> then click this option</span><br>
+					<img src="https://png.pngtree.com/png-vector/20200618/ourlarge/pngtree-car-seller-deal-buying-and-sell-flat-illustration-png-image_2257839.jpg" class="buy">
+				</div>
+			</a>
+		</div>
+		<div class="BigRight">
+			<a href='http://localhost:8000/carsale/uploadcar'>
+				<div class="MiniRight">
+					<h1>Seller</h1><br>
+					<span>If you want to sell a car<br> then click this option</span><br><br>
+					<img src="https://www.pngkit.com/png/detail/312-3127999_sell-your-junk-car-to-us-sale-car.png" class="sale">
+				</div>
+			</a>
+		</div>
+		<div class="BigNew">
+			<a href='http://127.0.0.1:8000/predict/'>
+				<div class="MiniNew">
+					<h1>Predict</h1><br>
+					<span>If you want prediction<br> then click this option</span><br><br>
+					<img src="http://madaboutscience.weebly.com/uploads/1/0/6/9/10698734/461812.gif" class="pre">
+				</div>
+			</a>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!-- login_acc.html -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<style type="text/css">
+		*
+	{
+		margin:0;
+		padding:0;
+		box-sizing: border-box;
+		
+	}
+	.Big
+	{
+		position: relative;
+		width: 100%;
+		height: 100vh;
+		background-color: pink;
+	}
+	.BigLeft
+	{
+		position: relative;
+		float: left;
+		width: 65%;
+		height: 100vh;
+		background-image: linear-gradient(to bottom left,#00b3b3,#00b3b3,#00e699);
+	}
+	.BigRight
+	{
+		position: relative;
+		float: left;
+		width: 35%;
+		height: 100vh;
+		background-color: white;
+	}
+	.MiniLeft
+	{
+		position: relative;
+		top: 10%;
+		left: 20%;
+		float: left;
+		width: 80%;
+		height: 80vh;
+		background-color: white;
+		text-align: center;
+		padding-top: 5%;
+		box-shadow: 10px 0px 30px 10px grey;
+	}
+	.MiniRight
+	{
+		position: relative;
+		top: 10%;
+		float: left;
+		width: 80%;
+		height: 80vh;
+		background-image: linear-gradient(to bottom left,#29a3a3,#00b377);
+		padding-top: 20%;
+		padding-left: 10%;
+		box-shadow: 10px 0px 30px 0px grey;
+	}
+	.signin
+	{
+		width: 200px;
+		height: 40px;
+		color: white;
+		background-color: transparent;
+		border: 1px solid white;
+		border-radius: 30px;
+		cursor: pointer;
+		margin-left: 60px;
+		transition: 0.6s ease;
+	}
+	.signin:hover
+	{
+		background-color: white;
+		color: #29a3a3;
+	}
+	.signup
+	{
+		width: 200px;
+		height: 40px;
+		color: white;
+		background-image: linear-gradient(to bottom left,#00b3b3,#00b3b3,#00b377);
+		border-radius: 30px;
+		border: none;
+		cursor: pointer;
+		transition: 0.6s ease;
+	}
+	.signup:hover
+	{
+		width: 400px;
+		height: 40px;
+	}
+	.textbox
+	{
+		width: 200px;
+		height: 40px;
+		padding: 10px;
+		border-radius: 10px;
+	}
+	.textbox2
+	{
+		width: 400px;
+		height: 40px;
+		padding: 15px;
+		border-radius: 30px;
+		border: 1px solid gray;
+		-webkit-box-shadow: inset 0px 5px 5px 1px lightgrey;	
+	}
+	.data
+	{
+		align-items: center;
+		text-align: center;
+	}
+	p
+	{
+		padding-left: 20%;
+	}
+
+	option
+	{
+		height: 50px;
+	}
+	.whitetext
+	{
+		color: white;
+		padding-left: 70px;
+	}
+	p
+	{
+		color: white;
+	}
+	.col
+	{
+		color: #29a3a3;
+	}
+</style>	
+<body>
+	<div class="Big">
+		<div class="BigLeft">
+			<div class="MiniLeft">
+				<h1 class="col">Sign In</h1><br><br>
+				<form method="post" action="loginsuccess">
+					{% csrf_token %}
+					<input type="text" placeholder="Email" name="aemail" class="textbox2"><br><br>
+					<input type="password" placeholder="Password" name="apassword" class="textbox2"><br><br>
+					<input type="submit" value="SIGN IN" class="signup">
+				</form>
+			</div>
+		</div>
+		<div class="BigRight">
+			<div class="MiniRight">
+				<br><br><h1 class="whitetext">Hello, Friend!</h1><br><br>
+				<p class="whitetext">Enter your personal details <br>&ensp;and start journey with us</p><br>
+				<a href='http://localhost:8000/carsale/create_acc'><button class="signin">SIGN UP</button></a>
+				<br><br><a href='../carsale/admin_login'><button class="signin">ADMIN LOGIN</button></a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

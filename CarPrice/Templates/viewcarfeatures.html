@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		*{
+			margin: 0px;
+			padding: 0px;
+			box-sizing: border-box;
+		}
+		.img1{
+			height: 300px;
+			width: 450px;
+		}
+		#ds{
+			display: none;
+		}
+		#text-to-speech{
+			height: 100px;
+			width: cover;
+			display: none;
+		}
+		.data
+		{
+			left: 35%;
+			top: 3%;
+			padding: 10px;
+			position: absolute;
+			border: none;
+			border-radius: 20px;
+			background-color: white;
+			text-align: center;
+		}
+		.big
+		{
+			position: absolute;
+			width: 100%;
+			height: 100vh;
+			background-image: linear-gradient(to bottom left,#00e699,#00b3b3,#00e699);
+		}
+		.orderbutton
+		{	
+			width: 200px;
+			height: 40px;
+			color: white;
+			background-color: #00a3cc;
+			border: 1px solid white;
+			border-radius: 30px;
+			cursor: pointer;
+			transition: 0.6s ease;
+		}
+		.orderbutton:hover
+		{
+			border-color: #00a3cc;
+			background-color: white;
+			color: #29a3a3;
+		}
+	</style>
+</head>
+<body>
+<div class="big">
+	<div class="data">
+		<input type="text" id="text-to-speech" value="Model Name {{x.car_model_name}} Brand {{x.car_brand}} Price {{x.car_price}} {{x.km_driven}}KM Driven {{x.owner_type}} Fuel {{x.fuel_type}} transmission {{x.transmission_type}} Mileage {{x.mileage}} KMpH Engine {{x.engine}} CC Power {{x.max_power}} bhp Seats No {{x.seats}}">
+		<button type="button" onclick="textToAudio()">Speak</button>
+		<div>
+			<img class="img1" src="{{x.car_image}}">
+			<h2>{{x.car_model_name}}</h2>
+			<span>Brand:</span><span>{{x.car_brand}}</span><br>
+			<span>Price:</span><span><var>₹{{x.car_price}}</var></span><br>
+			<span>Year:</span><span>{{x.year}}</span><br>
+			<span>Seller Type:</span><span>{{x.seller_type}}</span><br>
+			<span>KM Driven:</span><span>{{x.km_driven}}</span><br>
+			<span>Owner Type:</span><span>{{x.owner_type}}</span><br>
+			<span>Fuel Type:</span><span>{{x.fuel_type}}</span><br>
+			<span>Transmission Type:</span><span>{{x.transmission_type}}</span><br>
+			<span>Mileage:</span><span>{{x.mileage}} KMpH</span><br>
+			<span>Engine:</span><span>{{x.engine}}CC</span><br>
+			<span>Max Power:</span><span>{{x.max_power}}bhp</span><br>
+			<span>Seat No:</span><span>{{x.seats}}</span><br>
+			<span>Seller Name:</span><span>{{x.user_name}}</span><br>
+			<span>Seller Contact No:</span><span>{{x.user_phoneno}}</span><br>
+			<span>Car State:</span><span>{{x.car_state}}</span><br>
+			<a href="../buyerbooking/{{x.id}}"><button class="orderbutton">ORDER NOW</button></a><br>
+		</div>
+	</div>
+</div>
+	<script type="text/javascript">
+		function textToAudio() {
+                let msg = document.getElementById("text-to-speech").value;
+                
+                let speech = new SpeechSynthesisUtterance();
+                speech.lang = "en-US";
+                speech.text = msg;
+                speech.volume = 1;
+                speech.rate = 1;
+                speech.pitch = 1;
+                
+                window.speechSynthesis.speak(speech);
+            }
+	</script>
+</body>
+</html>

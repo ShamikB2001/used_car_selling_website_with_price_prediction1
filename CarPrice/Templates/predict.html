@@ -1,0 +1,59 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Predict</title>
+    <meta charset="utf-8">
+    <meta name="viewpoint" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="main">
+    <h1>Please enter the following values</h1>
+    <form action="result" method="get">
+                <p>seller_type</p>
+                <select name="n2">
+                    <option value="100">Dealer</option>
+                     <option value="200">Individual </option>
+                     <option value="300">Trustmark Dealer</option>
+                </select>
+                <p>Km_driven</p>
+                <input type="text" name="n3">
+                <p>owner_type</p>
+               <select name="n4">
+                    <option value="100">First Owner</option>
+                </select>
+                <p>fuel_type</p>
+                 <select name="n5">
+                    <option value="100">Petrol</option>
+                     <option value="200">Diesel </option>
+                     <option value="300">CNG</option>
+                     <option value="400">LPG</option>
+                     <option value="500">ELECTRIC</option>
+                </select>
+                <p>transmission_type</p>
+                  <select name="n6">
+                    <option value="100">Manual </option>
+                      <option value="200">Automatic </option>
+                  </select>
+                <p>Mileage_KMpH</p>
+                <input type="text" name="n7">
+                <p>Engine_cc</p>
+                <input type="text" name="n8">
+                <p>max_power_bhp</p>
+                <input type="text" name="n9">
+                <p>Seats</p>
+                <input type="text" name="n10">
+                <p>No_year</p>
+                <input type="text" name="n11">
+            <input type="submit" value="PREDICT">
+    </form>
+        <h2>{{result2}}</h2>
+</div>
+</body>
+</html>

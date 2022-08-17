@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<style type="text/css">
+	*{
+		padding: 0px;
+		margin: 0px;
+		box-sizing: border-box;	
+	}
+	.big
+	{
+		position: relative;
+		width: 100%;
+		height: 100vh;
+		background-image: linear-gradient(to bottom left,#00b3b3,#00b3b3,#00e699);
+	}
+	.small
+	{
+		left: 35%;
+		top: 5%;
+		width: 450px;
+		padding: 30px;
+		position: absolute;
+		border: none;
+		border-radius: 20px;
+		background-color: white;
+		text-align: center;
+	}
+	.textbox
+	{
+		width: 150px;
+		height: 30px;
+		padding: 10px;
+		margin-top: 5px;
+		margin-bottom: 5px;
+		border-radius: 30px;
+		border: 1px solid gray;
+		-webkit-box-shadow: inset 0px 5px 5px 1px lightgrey;	
+	}
+	.textbox2
+	{
+		width: 300px;
+		height: 30px;
+		padding: 10px;
+		margin-top: 5px;
+		margin-bottom: 5px;
+		border-radius: 30px;
+		border: 1px solid gray;
+		-webkit-box-shadow: inset 0px 5px 5px 1px lightgrey;	
+	}
+	.next
+	{
+		width: 200px;
+		height: 30px;
+		border-radius: 30px;
+		margin-top: 10px;
+		border: 1px solid #00e699;
+		cursor: pointer;
+		transition: 0.6s ease;
+	}
+	.next:hover
+	{
+		background-color: #00e699;
+		cursor: pointer;
+		color: white;
+	}
+	.sel1
+	{
+		width: 150px;
+		height: 30px;
+		margin-top: 10px;
+		border-radius: 30px;
+		padding-left: 10px;
+		border: 1px solid gray;
+		-webkit-box-shadow: inset 0px 5px 5px 1px lightgrey;
+	}
+	.sel2
+	{
+		width: 300px;
+		height: 30px;
+		margin-top: 10px;
+		border-radius: 30px;
+		padding-left: 10px;
+		border: 1px solid gray;
+		-webkit-box-shadow: inset 0px 5px 5px 1px lightgrey;
+	}
+</style>
+<body>
+	<div class="big">
+		<div class="small">
+			<h1>Upload Car data</h1><br>
+			<form method="post" action="car_details_filled">
+				{% csrf_token %}
+				<input type="text" placeholder="Model Name" name="car_model_name" class="textbox2"><br>
+				<input type="text" placeholder="Price" name="car_price" class="textbox">
+				<input type="text" placeholder="Year" name="year" class="textbox"><br>
+				<input type="text" placeholder="Car Brand" name="car_brand" class="textbox2"><br>
+				<input type="text" placeholder="Car Image" name="car_image" class="textbox2"><br>
+				<select name="seller_type" class="sel2">
+					<option value="null">Seller Type</option>
+					<option value="Individual">Individual</option>
+					<option value="Dealer">Dealer</option>
+				</select>
+				<br>
+				<input type="text" placeholder="Seller Name" name="user_name" class="textbox">
+				<input type="tel" placeholder="Contact No" name="user_phoneno" class="textbox">
+				<br>
+				<select name="car_state" class="sel2">
+					<option>Seller State</option>
+					<option value="Andhra Pradesh">Andhra Pradesh</option>
+					<option value="Arunachal Pradesh">Arunachal Pradesh</option>
+					<option value="Assam">Assam</option>
+					<option value="Bihar">Bihar</option>
+					<option value="Chhattisgarh">Chhattisgarh</option>
+					<option value="Goa">Goa</option>
+					<option value="Gujarat">Gujarat</option>
+					<option value="Haryana">Haryana</option>
+					<option value="Himachal Pradesh">Himachal Pradesh</option>
+					<option value="Jammu and Kashmir">Jammu and Kashmir</option>
+					<option value="Jharkhand">Jharkhand</option>
+					<option value="Karnataka">Karnataka</option>
+					<option value="Kerala">Kerala</option>
+					<option value="Madhya Pradesh">Madhya Pradesh</option>
+					<option value="Maharashtra">Maharashtra</option>
+					<option value="Manipur">Manipur</option>
+					<option value="Meghalaya">Meghalaya</option>
+					<option value="Mizoram">Mizoram</option>
+					<option value="Nagaland">Nagaland</option>
+					<option value="Odisha">Odisha</option>
+					<option value="Punjab">Punjab</option>
+					<option value="Rajasthan">Rajasthan</option>
+					<option value="Sikkim">Sikkim</option>
+					<option value="Tamil Nadu">Tamil Nadu</option>
+					<option value="Telangana">Telangana</option>
+					<option value="Tripura">Tripura</option>
+					<option value="Uttar Pradesh">Uttar Pradesh</option>
+					<option value="Uttarakhand">Uttarakhand</option>
+					<option value="West Bengal">West Bengal</option>
+				</select>
+				<br>
+				<input type="tel" placeholder="KM Driven" name="km_driven" class="textbox2"><br>
+				<select name="owner_type" class="sel1">
+					<option value="null">Owner Type</option>
+					<option value="First Owner">First Owner</option>
+					<option value="Second Owner">Second Owner</option>
+					<option value="Above 2">Above 2</option>
+				</select>
+				<select name="fuel_type" class="sel1">
+					<option value="null">Fuel Type</option>
+					<option value="Pectrol">Pectrol</option>
+					<option value="Diesel">Diesel</option>
+					<option value="CNG">CNG</option>
+				</select>
+				<br>
+				<select name="transmission_type" class="sel2">
+					<option value="null">Transmission Type</option>
+					<option value="Manual">Manual</option>
+					<option value="Automatic">Automatic</option>
+				</select><br>
+				<input type="text" placeholder="Mileage" name="mileage" class="textbox">
+				<input type="text" placeholder="Engine" name="engine" class="textbox"><br>
+				<input type="text" placeholder="Max Power" name="max_power" class="textbox">
+				<select name="seats" class="sel1">
+					<option>Seat No.</option>
+					<option value="5">5</option>
+					<option value="7">7</option>
+					<option value="9">9</option>
+				</select><br>
+			<input type="submit" name="" class="next">
+			</form>
+		</div>
+	</div>
+</body>
+</html>

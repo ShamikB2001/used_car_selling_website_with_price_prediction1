@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <style>
+        h2{
+            margin-top:150px;
+            font-size:40px;
+        }
+        h1{
+            font-size:60px;
+        }
+        input[type=submit]{
+            background-color:#000000;
+            color:white;
+            cursor:pointer;
+            padding: 16px 32px;
+        }
+         body{
+             background-image:url('{%static 'images/one.jpg'%}');
+             background-repeat:no-repeat;
+             background-attachment:fixed;
+             background-size:cover;
+             }
+    </style>
+</head>
+<body>
+
+<p>Welcome to homepage!</p>
+<h2>Welcome to</h2>
+<H1>Car Price Prediction System </H1>
+<form action="predict">
+    <input type="submit" value = "START">
+</form>
+
+
+</body>
+</html>

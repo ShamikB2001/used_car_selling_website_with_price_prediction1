@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load static %}
+	<title></title>
+	<style type="text/css">
+		*
+		{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: "calibri";
+		}
+		body
+		{
+			background-color: lightcyan;
+		}
+		table
+		{
+			border: none;
+			width: 100%;
+		}
+		th
+		{
+			background-color: #00b3b3;
+			height: 50px;
+		}
+		td
+		{
+			background-color: #00e699;
+		}
+		.img1{
+			height: 100px;
+			width: 150px;
+		}
+		#div1{
+			display: none;
+		}
+		.se{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<table>
+			<tr>
+				<th>Buyer Name</th>
+				<th>Buyer Email</th>
+				<th>Buyer Phone</th>
+				<th>Buyer Address</th>
+				<th>Buyer Pincode</th>
+				<th>Car Model Name</th>
+				<th>Car Price</th>
+				<th>Car Image</th>
+				<th>Upload Time</th>
+				<th>Saler Name</th>
+				<th>Bill</th>
+			</tr>
+			{%  for i in x reversed  %}
+			<tr>
+				<td>{{i.buyer_name}}</td>
+				<td>{{i.buyer_email}}</td>
+				<td>{{i.buyer_phone}}</td>
+				<td>{{i.buyer_address}}</td>
+				<td>{{i.buyer_pincode}}</td>
+				<td>{{i.bcar_model_name}}</td>
+				<td>{{i.bcar_price}}</td>
+				<td><img class="img1" src="{{i.bcar_image}}"></td>
+				<td>{{i.buyer_time}}</td>
+				<td>{{i.buser_name}}</td>
+<!--				<td><a href="../carsale/printbill/{{i.id}}">Bill</a></td> -->
+				<td>
+					<form action="mailto:{{i.buyer_email}}" method="post" enctype="text/plain">
+						<input class="se" type="text" value="{{i.buyer_name}}" name="name">
+						<input class="se" type="text" value="From company@gmail.com Download the bill below link" name="mail">
+						<input class="se" type="text" value="Download Bill" name="subject">
+						<input class="se" type="text" value="http://localhost:8000/carsale/printbill/{{i.id}}" name="download">
+						<input type="submit" value="Send">
+					</form>
+				</td>
+
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+</body>
+</html>

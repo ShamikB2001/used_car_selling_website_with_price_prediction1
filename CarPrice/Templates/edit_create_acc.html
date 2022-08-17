@@ -1,0 +1,29 @@
+<!-- edit_create_acc.html -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div>
+		<div>
+			<form method="post" action="../create_acc_edit/{{x.id}}">
+				{% csrf_token %}
+				<input type="text" placeholder="Enter Your Name" name="aname" value="{{x.aname}}"><br>
+				<input type="text" placeholder="Enter Your Email" name="aemail" value="{{x.aemail}}"><br>
+				<input type="tel" placeholder="Enter Your Phone No" name="aphoneno" value="{{x.aphoneno}}"><br>
+				<input type="text" placeholder="Enter Your Password" name="apassword" value="{{x.apassword}}"><br>
+				<input type="password" placeholder="Enter Your Password" name="acpassword" value="{{x.acpassword}}"><br>
+				<label>You are :</label><select name="atype">
+					<option value="{{x.atype}}">{{x.atype}}</option>
+					<option value="Buyer">Buyer</option>
+					<option value="Saler">Saler</option>
+				</select><br>
+				<input type="submit" value="Create Account">
+			</form>
+		</div>
+		<div>
+		</div>
+	</div>
+</body>
+</html>

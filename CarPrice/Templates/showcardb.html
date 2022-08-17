@@ -1,0 +1,214 @@
+<!-- showcardb.html -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		*
+		{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: "calibri";
+		}
+		body
+		{
+			background-color: lightcyan;
+		}
+		table
+		{
+			border: none;
+			width: 100%;
+		}
+		th
+		{
+			background-color: #00b3b3;
+			height: 50px;
+		}
+		td
+		{
+			background-color: #00e699;
+		}
+		.img1{
+			height: 100px;
+			width: 150px;
+		}
+		.searchitem{
+			display: none;
+			height: 200px;
+			width: 500;
+			background-color: lightgreen;
+			color: white;
+		}
+		.iconimg{
+			width: 30px;
+			height: 30px;
+		}
+		#btn{
+			border: none;
+			outline: none;
+			background-color: transparent;
+			border-radius: 50%;
+		}
+		#st
+		{
+			width: 150px;
+			height: 30px;
+			margin-left: 30%;
+			margin-bottom: 3%;
+			margin-top: 2%;
+			border-radius: 30px;
+			padding-left: 25px;
+		}
+		#sb
+		{
+			width: 400px;
+			height: 30px;
+			border-radius: 30px;
+			padding-left: 20px;
+			border: 1px solid grey;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<div>
+			<select id="st">
+				<option value="0">Model Name</option>
+				<option value="1">Brand</option>
+				<option value="3">Price</option>
+				<option value="4">Year</option>
+				<option value="5">Seller Type</option>
+				<option value="6">Seller Name</option>
+				<option value="7">Seller Contact No</option>
+				<option value="8">Car State</option>
+				<option value="9">KM Driven</option>
+				<option value="10">Owner Type</option>
+				<option value="11">Fuel Type</option>
+				<option value="12">Transmission Type</option>
+				<option value="13">Milage</option>
+				<option value="14">Engine</option>
+				<option value="15">Max Power</option>
+				<option value="16">Seats</option>
+				
+			</select>
+			<input type="text" placeholder="Search Bar" id="sb" onkeyup="callSearch1()">
+			<button id="btn" onclick='recognition.start()' ondblclick="voiceSearch()"><img class="iconimg" src="https://png.pngitem.com/pimgs/s/160-1602527_radio-spot-icon-microphone-icon-green-png-transparent.png"></button>
+			<div class="searchitem" id="si">
+				<button onclick="callSearch1()">Search</button>
+				<h1 id="result"></h1>  
+				<button onclick="voiceSearchClose()">X</button>
+			</div>
+		</div>
+		<div>
+		<table id="myTable">
+			<tr>
+				<th>Model Name</th>
+				<th>Brand</th>
+				<th>Image</th>
+				<th>Price</th>
+				<th>Year</th>
+				<th>Seller Type</th>
+				<th>Seller Name</th>
+				<th>Seller Contact No</th>
+				<th>Car State</th>
+				<th>KM Driven</th>
+				<th>Owner Type</th>
+				<th>Fuel Type</th>
+				<th>Transmission Type</th>
+				<th>Mileage</th>
+				<th>Engine</th>
+				<th>Max Power</th>
+				<th>Seat No</th>
+				<th>Edit</th>
+				<th>Delete</th>
+			</tr>
+			{% for i in x reversed %}
+				<tr>
+					<td>{{ i.car_model_name }}</td>
+					<td>{{ i.car_brand }}</td>
+					<td><a href="{{i.car_image}}" target="blank"><img class="img1" src="{{i.car_image}}"></a></td>
+					<td>{{ i.car_price }}</td>
+					<td>{{ i.year }}</td>
+					<td>{{ i.seller_type }}</td>
+					<td>{{ i.user_name }}</td>
+					<td>{{ i.user_phoneno }}</td>
+					<td>{{ i.car_state }}</td>
+					<td>{{ i.km_driven }}</td>
+					<td>{{ i.owner_type }}</td>
+					<td>{{ i.fuel_type }}</td>
+					<td>{{ i.transmission_type }}</td>
+					<td>{{ i.mileage }}</td>
+					<td>{{ i.engine }}</td>
+					<td>{{ i.max_power }}</td>
+					<td>{{ i.seats }}</td>
+					<td><a href="editcardb/{{ i.id }}">edit</a></td>
+					<td><a href="deletecardb/{{ i.id }}">delete</a></td>
+				</tr>
+			{% endfor %}
+		</table>
+		</div>
+	</div>
+	<script type="text/javascript">
+		const btn = document.getElementById('btn'); 
+ 
+		const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition; 
+		const recognition = new SpeechRecognition(); 
+ 
+		recognition.onstart = function(){ 
+    	console.log('You can speak now!!!'); 
+		} 
+ 
+		recognition.onresult = function(event){ 
+    	var text = event.results[0][0].transcript; 
+    	console.log(text); 
+    	document.getElementById('sb').value = text;
+    	document.getElementById('result').innerHTML = text; 
+    	read(text);
+    	//searching(text);
+    }
+    	function read(text)
+    	{ 
+   			var speech = new SpeechSynthesisUtterance(); 
+    		speech.text = text; 
+    		//searching(speech.text);
+    	/*	if(text.includes('time')) 
+        		speech.text = searching(input);*/
+        	window.speechSynthesis.speak(speech); 
+		}
+		function callSearch1()
+		{
+			input = document.getElementById("sb");
+			searching(input);
+		}
+		function searching(input)
+		{
+  			var filter, table, tr, td, i, txtValue;
+			x= document.getElementById('st').value;
+  			filter = input.value.toUpperCase();
+  			table = document.getElementById("myTable");
+  			tr = table.getElementsByTagName("tr");
+  			for (i = 0; i < tr.length; i++) {
+    			td = tr[i].getElementsByTagName("td")[x];
+    			if (td) {
+      				txtValue = td.textContent || td.innerText;
+      				if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        				tr[i].style.display = "";
+      				} 
+      				else {
+        				tr[i].style.display = "none";
+      				}
+    			}       
+  			}
+		}
+		function voiceSearch()
+ 		{
+ 			document.getElementById("si").style.display="block"
+ 		}
+ 		function voiceSearchClose()
+ 		{
+ 			document.getElementById("si").style.display="none"
+ 		}
+	</script>
+</body>
+</html>
